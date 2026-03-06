@@ -1,0 +1,180 @@
+---
+import Layout from '../layouts/Layout.astro';
+// Al principio de tu archivo index.astro, puedes definir las reviews para que sea más limpio
+const reviews = [
+  { text: "La claridad es inigualable", name: "Olaf Jensen" },
+  { text: "Puro lujo para mis oídos", name: "Sara K." },
+  { text: "Por fin escucho el silencio", name: "Marcus V." },
+  { text: "Un diseño que grita 'premium'", name: "Elena F." },
+];
+---
+
+<Layout title="AURA - Studio Gen 1">
+  <section class="max-w-[1440px] mx-auto px-6 lg:px-12 py-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+      
+      <div class="lg:col-span-7 space-y-8">
+        <div class="group overflow-hidden rounded-3xl bg-neutral-900 aspect-[4/5]">
+          <img 
+            src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?q=80&w=1200&auto=format&fit=crop" 
+            alt="Aura Studio Headphones" 
+            class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+          />
+        </div>
+        <div class="grid grid-cols-2 gap-8">
+          <div class="rounded-3xl overflow-hidden bg-neutral-900 aspect-square">
+            <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover opacity-80" />
+          </div>
+          <div class="rounded-3xl overflow-hidden bg-neutral-900 aspect-square">
+            <img src="https://images.unsplash.com/photo-1484704849700-f032a568e944?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover opacity-80" />
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-5 lg:sticky lg:top-32 space-y-10">
+        <header>
+          <div class="flex items-center gap-2 mb-6">
+            <span class="h-[1px] w-8 bg-neutral-700"></span>
+            <span class="text-[10px] tracking-[0.4em] uppercase text-neutral-500 font-semibold">Available Now</span>
+          </div>
+          <h1 class="text-5xl xl:text-7xl font-serif leading-[1.1] mb-6">
+            Pure Sound. <br/> <span class="italic text-neutral-500">No Distraction.</span>
+          </h1>
+          <p class="text-neutral-400 text-lg leading-relaxed max-w-md">
+            The Studio Gen 1 combines aerospace-grade aluminum with our signature acoustic engineering.
+          </p>
+        </header>
+
+        <div class="space-y-6">
+          <div class="flex justify-between items-end">
+             <span class="text-xs uppercase tracking-widest text-neutral-500 font-bold">Select Color</span>
+             <span class="text-sm text-neutral-300">Midnight Black</span>
+          </div>
+          <div class="flex gap-3">
+            <button class="w-10 h-10 rounded-full border border-white/20 bg-black ring-2 ring-white ring-offset-4 ring-offset-[#050505] transition-all"></button>
+            <button class="w-10 h-10 rounded-full border border-white/10 bg-neutral-400 hover:scale-110 transition-transform"></button>
+            <button class="w-10 h-10 rounded-full border border-white/10 bg-[#2a303c] hover:scale-110 transition-transform"></button>
+          </div>
+        </div>
+
+        <div class="pt-6 space-y-4">
+          <div class="text-3xl font-light mb-8">$499.00</div>
+          <button class="group relative w-full overflow-hidden rounded-full bg-white px-8 py-5 text-black transition-all hover:bg-neutral-200">
+            <span class="relative z-10 font-bold tracking-tight">Add to Experience — $499</span>
+          </button>
+          <p class="text-center text-[10px] text-neutral-600 uppercase tracking-widest">Free Express Shipping & 30-Day Returns</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="max-w-[1440px] mx-auto px-6 lg:px-12 py-24">
+  <div class="mb-16">
+    <h2 class="text-3xl font-serif italic text-neutral-400">Technical Prowess</h2>
+    <p class="text-sm uppercase tracking-[0.5em] text-neutral-600">The science of sound</p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 h-auto md:h-[600px]">
+    
+    <div class="md:col-span-2 md:row-span-2 bg-neutral-900/50 border border-white/5 rounded-3xl p-8 flex flex-col justify-between group overflow-hidden relative">
+      <div class="z-10">
+        <h3 class="text-2xl font-light mb-2">Beryllium Drivers</h3>
+        <p class="text-neutral-500 text-sm max-w-xs">Laboratory-grade diaphragms for zero distortion at any volume.</p>
+      </div>
+      <div class="absolute -bottom-10 -right-10 w-64 h-64 bg-white/5 rounded-full blur-3xl group-hover:bg-white/10 transition-colors"></div>
+      <span class="text-6xl font-serif italic text-white/5 self-end">40mm</span>
+    </div>
+
+    <div class="md:col-span-2 bg-neutral-900/50 border border-white/5 rounded-3xl p-8 flex items-center justify-between group">
+      <div>
+        <h3 class="text-xl font-light">Adaptive ANC</h3>
+        <p class="text-neutral-500 text-sm">Silence external noise up to 45dB.</p>
+      </div>
+      <div class="flex gap-1">
+        <div class="w-1 h-8 bg-white/20 animate-pulse"></div>
+        <div class="w-1 h-12 bg-white animate-pulse"></div>
+        <div class="w-1 h-6 bg-white/40 animate-pulse"></div>
+      </div>
+    </div>
+
+    <div class="bg-neutral-900/50 border border-white/5 rounded-3xl p-8 flex flex-col justify-center items-center text-center group hover:bg-white/[0.02] transition-colors">
+      <span class="text-3xl mb-2 font-serif uppercase tracking-tighter text-white">60h</span>
+      <p class="text-[10px] uppercase tracking-widest text-neutral-500">Battery Life</p>
+    </div>
+
+    <div class="bg-gradient-to-br from-neutral-800 to-neutral-950 border border-white/5 rounded-3xl p-8 flex flex-col justify-center group relative overflow-hidden">
+        <h3 class="text-lg font-light">Lossless</h3>
+        <p class="text-neutral-500 text-xs">AptX Adaptive Support</p>
+        <div class="absolute top-0 right-0 p-4">
+            <div class="w-2 h-2 bg-green-500 rounded-full animate-ping"></div>
+        </div>
+    </div>
+
+  </div>
+  </section>
+
+  <!--<section class="py-20 bg-white text-black overflow-hidden">
+  <div class="flex flex-col gap-8">
+    <h2 class="text-center font-serif italic text-4xl">What our artists say</h2>
+    
+    <div class="flex overflow-hidden group">
+      <div class="flex whitespace-nowrap animate-marquee group-hover:pause">
+        {[1, 2, 3].map(() => (
+          <div class="flex gap-12 px-6 italic text-2xl lg:text-5xl font-light tracking-tighter">
+            <span>"The clarity is unmatched" — <span class="font-serif">Olaf Jensen</span></span>
+            <span class="text-neutral-300">/</span>
+            <span>"Pure luxury for my ears" — <span class="font-serif">Sara K.</span></span>
+            <span class="text-neutral-300">/</span>
+            <span>"I finally hear the silence" — <span class="font-serif">Marcus V.</span></span>
+            <span class="text-neutral-300">/</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+  </section>-->
+
+  <section class="py-24 bg-white text-black overflow-hidden border-t border-b border-black/5">
+    <div class="max-w-[1440px] mx-auto px-6 mb-16">
+      <h2 class="text-xs uppercase tracking-[0.5em] text-neutral-400">Voices of Aura</h2>
+      <p class="text-4xl font-serif italic mt-4">What our artists say</p>
+    </div>
+
+    <div class="w-full overflow-hidden group">
+      <div class="flex whitespace-nowrap animate-marquee group-hover:pause gap-12 px-6">
+        
+        {reviews.map((review) => (
+          <div class="flex items-center gap-12 italic text-2xl lg:text-5xl font-light tracking-tighter">
+            <span>"{review.text}" — <span class="font-serif text-3xl lg:text-6xl">{review.name}</span></span>
+            <span class="text-neutral-200">/</span>
+          </div>
+        ))}
+
+        {reviews.map((review) => (
+          <div class="flex items-center gap-12 italic text-2xl lg:text-5xl font-light tracking-tighter" aria-hidden="true">
+            <span>"{review.text}" — <span class="font-serif text-3xl lg:text-6xl">{review.name}</span></span>
+            <span class="text-neutral-200">/</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+<style>
+  .animate-marquee {
+    display: flex;
+    animation: marquee 30s linear infinite;
+  }
+
+  .pause {
+    animation-play-state: paused;
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+</style>
+
+</Layout>

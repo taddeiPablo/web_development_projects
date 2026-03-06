@@ -1,0 +1,163 @@
+---
+// En el frontmatter (la parte de arriba entre ---)
+import '../styles/global.css'; // Si creaste un archivo CSS global
+// Importamos las fuentes que instalamos antes
+import '@fontsource-variable/inter';
+import '@fontsource/playfair-display';
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = "AURA - High-End Audio Experience" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<div class="bg-[#050505] text-white selection:bg-white selection:text-black">
+		<nav class="fixed top-0 w-full z-50 border-b border-white/5 bg-[#050505]/80 backdrop-blur-md">
+			<div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+				<span class="font-serif text-2xl tracking-tighter italic">AURA</span>
+				<div class="hidden md:flex gap-8 text-xs uppercase tracking-widest text-neutral-400">
+					<a href="#" class="hover:text-white transition-colors">Collection</a>
+					<a href="#" class="hover:text-white transition-colors">Technology</a>
+					<a href="#" class="hover:text-white transition-colors">Support</a>
+				</div>
+				<button class="text-xs uppercase tracking-widest border border-white/20 px-4 py-2 rounded-full hover:bg-white hover:text-black transition-all">
+					Cart 0(<span id="cart-count">0</span>)
+				</button>
+			</div>
+		</nav>
+
+		<main class="pt-20">
+			<slot />
+		</main>
+
+		<footer class="py-20 border-t border-white/5 mt-20">
+			<div class="max-w-7xl mx-auto px-6 text-center">
+				<p class="text-neutral-600 text-sm italic">© 2026 AURA Audio. Crafted for those who listen.</p>
+			</div>
+		</footer>
+
+		<style is:global>
+			/* CSS PURO: Aquí definimos comportamientos globales que Tailwind no toca */
+			:root {
+				--accent: #fff;
+			}
+			
+			html {
+				scroll-behavior: smooth;
+			}
+
+			body {
+				/* Aplicamos la fuente Inter por defecto */
+				font-family: 'Inter Variable', sans-serif;
+			}
+
+			h1, h2, h3, .font-serif {
+				/* Aplicamos Playfair para títulos */
+				font-family: 'Playfair Display', serif;
+			}
+
+			/* Custom scrollbar para ese look "Luxury" */
+			::-webkit-scrollbar {
+				width: 6px;
+			}
+			::-webkit-scrollbar-track {
+				background: #050505;
+			}
+			::-webkit-scrollbar-thumb {
+				background: #222;
+				border-radius: 10px;
+			}
+			::-webkit-scrollbar-thumb:hover {
+				background: #333;
+			}
+		</style>
+		<div id="cart-overlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] opacity-0 pointer-events-none transition-opacity duration-500"></div>
+
+			<div id="cart-drawer" class="fixed top-0 right-0 h-full w-full md:w-[450px] bg-[#0a0a0a] z-[70] translate-x-full transition-transform duration-500 ease-in-out border-l border-white/5 p-8 flex flex-col">
+				
+				<div class="flex justify-between items-center mb-12">
+					<h2 class="text-2xl font-serif italic">Your Bag</h2>
+					<button id="close-cart" class="text-xs uppercase tracking-widest text-neutral-500 hover:text-white">Close</button>
+				</div>
+
+				<div class="flex-1">
+					<div id="cart-empty-msg" class="text-neutral-600 italic text-center mt-20">
+						Your bag is empty.
+					</div>
+					
+					<div id="cart-item-mock" class="hidden flex gap-6 items-center border-b border-white/5 pb-6">
+						<div class="w-20 h-24 bg-neutral-900 rounded-lg overflow-hidden">
+							<img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?q=80&w=200" class="w-full h-full object-cover" />
+						</div>
+						<div class="flex-1">
+							<h4 class="text-sm font-medium">AURA Studio Gen 1</h4>
+							<p class="text-xs text-neutral-500 mt-1 italic">Midnight Black</p>
+							<div class="flex justify-between items-end mt-4">
+								<span class="text-sm">$499.00</span>
+								<span class="text-[10px] uppercase text-neutral-600 font-bold">Qty: 1</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="border-t border-white/5 pt-8 space-y-4">
+					<div class="flex justify-between text-sm uppercase tracking-widest text-neutral-400">
+						<span>Subtotal</span>
+						<span class="text-white">$499.00</span>
+					</div>
+					<button class="w-full bg-white text-black py-5 rounded-full font-bold hover:bg-neutral-200 transition-colors">
+						Checkout — $499.00
+					</button>
+				</div>
+			</div>
+
+		<script>
+			const initCart = () => {
+				// 1. Capturamos los elementos
+				const cartBtn = document.getElementById('cart-nav-btn');
+				const drawer = document.getElementById('cart-drawer');
+				const overlay = document.getElementById('cart-overlay');
+				const closeBtn = document.getElementById('close-cart');
+
+				// 2. Verificación en consola (F12 para ver esto)
+				console.log("Estado de elementos:", { 
+				btn: !!cartBtn, 
+				panel: !!drawer, 
+				fondo: !!overlay 
+				});
+
+				if (cartBtn && drawer && overlay) {
+				cartBtn.addEventListener('click', () => {
+					console.log("Abriendo carrito...");
+					drawer.classList.remove('translate-x-full'); // Quita el "fuera de pantalla"
+					overlay.classList.remove('opacity-0', 'pointer-events-none'); // Muestra el fondo
+				});
+				}
+
+				// Función para cerrar
+				const closeCart = () => {
+				drawer?.classList.add('translate-x-full');
+				overlay?.classList.add('opacity-0', 'pointer-events-none');
+				};
+
+				closeBtn?.addEventListener('click', closeCart);
+				overlay?.addEventListener('click', closeCart);
+			};
+
+			// Ejecutar
+			initCart();
+		</script>
+	</body>
+</html>

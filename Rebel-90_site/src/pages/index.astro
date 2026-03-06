@@ -1,0 +1,94 @@
+---
+import Welcome from '../components/Welcome.astro';
+import Layout from '../layouts/Layout.astro';
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+---
+
+<Layout>
+	<Welcome />
+	<section id="gallery" class="max-w-[1440px] mx-auto px-10 py-24">
+			<div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+				<div>
+				<h2 class="text-xs uppercase tracking-[0.5em] text-white mb-4">Street Archives</h2>
+				<p class="text-styleline text-5xl font-black italic uppercase leading-none">Style <br/> <span class="text-outline">Gallery</span></p>
+				</div>
+				<p class="text-white max-w-xs text-sm border-l border-white/10 pl-6">
+				Capturados en el caos. La esencia de REBEL-9 en las calles del mundo.
+				</p>
+			</div>
+
+			<div class="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[300px]">
+				
+				<div class="md:row-span-2 relative group overflow-hidden rounded-sm cursor-crosshair">
+				<img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?q=80&w=800" class="gallery-img" alt="Streetwear 1" />
+				<div class="gallery-overlay">
+					<span class="text-white font-bold tracking-widest text-xs italic">FALL '26</span>
+				</div>
+				</div>
+
+				<div class="relative group overflow-hidden rounded-sm cursor-crosshair">
+				<img src="https://images.unsplash.com/photo-1611858447198-c6b3cc794943?q=80&w=800" class="gallery-img grayscale group-hover:grayscale-0" alt="Streetwear 2" />
+				<div class="gallery-overlay">
+					<span class="text-white font-bold tracking-widest text-xs italic">SKATE OPS</span>
+				</div>
+				</div>
+
+				<div class="md:col-span-2 relative group overflow-hidden rounded-sm cursor-crosshair">
+				<img src="https://images.unsplash.com/photo-1635343905663-28b198347d7b?q=80&w=1000" class="gallery-img brightness-50 group-hover:brightness-100" alt="Streetwear 3" />
+				<div class="gallery-overlay">
+					<span class="text-white font-bold tracking-widest text-xs italic">NIGHT SHIFT</span>
+				</div>
+				</div>
+
+				<div class="relative group overflow-hidden rounded-sm cursor-crosshair">
+				<img src="https://images.unsplash.com/photo-1516478177764-9fe5bd7e9717?q=80&w=800" class="gallery-img" alt="Streetwear 4" />
+				<div class="gallery-overlay">
+					<span class="text-white font-bold tracking-widest text-xs italic">TOKYO DRIP</span>
+				</div>
+				</div>
+
+				<div class="relative group overflow-hidden rounded-sm cursor-crosshair">
+				<img src="https://images.unsplash.com/photo-1534353473418-4cfa6c56fd38?q=80&w=800" class="gallery-img scale-125 group-hover:scale-100" alt="Streetwear 5" />
+				<div class="gallery-overlay">
+					<span class="text-white font-bold tracking-widest text-xs italic">REBEL CORE</span>
+				</div>
+				</div>
+			</div>
+	</section>
+</Layout>
+
+<style is:global>
+  /* Importante: Esto le da el "diccionario" a Tailwind sin añadir peso extra */
+  @reference "tailwindcss";
+  /* Texto con borde (estilo graffiti/urbano) */
+  .text-outline {
+    -webkit-text-stroke: 1px rgb(255, 255, 255);
+    color: transparent;
+  }
+
+  .text-styleline {
+	-webkit-text-stroke: 1px rgb(255, 255, 255);
+	color: transparent;
+  }
+
+  #gallery{
+	margin-top: 35px;
+  }
+
+  .gallery-img {
+    @apply w-full h-full object-cover transition-all duration-700 ease-out;
+  }
+
+  /* El efecto de hover: Zoom, rotación mínima y saturación */
+  .group:hover .gallery-img {
+    transform: scale(1.1) rotate(1deg);
+    filter: saturate(1.2) contrast(1.1);
+  }
+
+  /* Overlay que aparece con el nombre de la colección */
+  .gallery-overlay {
+    @apply absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center;
+  }
+</style>
