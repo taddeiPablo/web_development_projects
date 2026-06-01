@@ -1,0 +1,104 @@
+---
+import Home from "../components/Home/Home_component.astro";
+import Project from "../components/Projects/Projects_component.astro";
+import Contact from "../components/Contact/Contact_component.astro";
+
+const projects = [
+  {
+    title: "E-commerce Premium",
+    description:
+      "Tienda online optimizada para SEO y rendimiento. Incremento del 40% en velocidad de carga.",
+    tags: ["Astro", "SEO", "Responsive"],
+    image: "/images/project-1.jpg",
+  },
+  {
+    title: "Sistema de Turnos",
+    description:
+      "Aplicación web para gestión de reservas y recordatorios automáticos.",
+    tags: ["React", "Node.js", "PostgreSQL"],
+    image: "/images/project-2.jpg",
+  },
+  {
+    title: "Automatización Comercial",
+    description:
+      "Integración de formularios, CRM y WhatsApp para reducir tareas manuales.",
+    tags: ["n8n", "API", "IA"],
+    image: "/images/project-3.jpg",
+  },
+];
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>SOUTHERN CODE</title>
+		<style>
+			/* Estilos generales */
+			body {
+				font-family: system-ui, sans-serif;
+				line-height: 1.4;
+				padding: 2rem;
+				background-color: #0f172a;
+			}
+			/* Estilos para el header y navegación */
+			nav {
+				display: flex;
+				justify-content: space-between; /* separa logo y menú */
+				align-items: center;
+			}
+
+			.logo {
+				margin: 0;
+				font-size: 2rem;
+				color: #ff3e00;
+			}
+			nav ul {
+				display: flex;
+				gap: 1.5rem;
+				list-style: none;
+				margin: 0;
+				padding: 0;
+			}
+
+			nav a {
+				text-decoration: none;
+				color: #333;
+				font-weight: 500;
+			}
+
+			nav ul li a {
+				text-decoration: none;
+				color: #fdfcfc;
+				font-weight: 500;
+			}
+
+			nav ul li a:hover {
+				color: #ff3e00;
+			}
+
+		</style>
+	</head>
+	<body>
+		<header>
+			<nav>
+				<div class="logo">
+					SOUTHERN CODE
+				</div>
+				<ul>
+					<li><a href="/">Inicio</a></li>
+					<li><a href="#proyectos">Proyectos</a></li>
+					<li><a href="#contacto">Contacto</a></li>
+				</ul>
+			</nav>
+		</header>
+		<main>
+			<Home />
+			<Project projects={projects} />
+			<Contact />
+		</main>
+	</body>
+</html>
